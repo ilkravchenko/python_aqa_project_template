@@ -4,7 +4,7 @@ import json
 from api.base_api import BaseApi
 
 
-class TestUserAPI(BaseApi):
+class TestUserApi(BaseApi):
     """
     A class that extends BaseApi to handle API requests related to Test User API.
     Provides methods for Some business processes and creating Users.
