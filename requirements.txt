@@ -1,0 +1,14 @@
+fpdf2
+httpx[http2]
+playwright
+psycopg2-binary
+psutil
+pypdf
+pytest
+pytest-picked
+pytest-qt
+pytest-timeout
+pytest-xdist
+pytest-rerunfailures
+ruff
+xmltodict
