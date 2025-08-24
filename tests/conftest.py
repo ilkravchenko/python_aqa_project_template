@@ -2,11 +2,15 @@ import os
 import time
 from random import uniform
 
-import pytest
 from playwright._impl._errors import TimeoutError
 
 from pages import Pages
 from pages.urls import Urls
+from tests.fixtures.clean_up_fixtures import *
+from tests.fixtures.creation_fixtures import *
+
+
+fixtures = CREATION, CLEAN_UP
 
 
 @pytest.fixture(scope="session")

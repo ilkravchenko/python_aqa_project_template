@@ -224,8 +224,26 @@ def db_conn() -> DBConnector:
     """
     Creates a PostgreSQL connection to the registry database for the entire test session.
 
-    Retrieves database credentials from OpenShift secrets and establishes a connection
-    to the operational PostgreSQL instance.
+    Yields:
+        psycopg2.connection: Active database connection to the registry database
+    """
+    pod_name = "POD_NAME"
+    namespace = "NAMESPACE"
+    dbname = "DB_NAME"
+    pg_info = dict()
+    pod_port = int(pg_info['port'])
+    user = pg_info['user']
+    password = pg_info['password']
+
+    # Connection is automatically closed when the context manager exits
+    with DBConnector(pod_name, namespace, pod_port, dbname, user, password) as connection:
+        yield connection
+
+
+@pytest.fixture(scope="session")
+def analitical_conn() -> DBConnector:
+    """
+    Creates a PostgreSQL connection to the database for the entire test session.
 
     Yields:
         psycopg2.connection: Active database connection to the registry database
